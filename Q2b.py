@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import csv
 import sys
-reader = csv.reader(open("Ndistance.txt","rb"), delimiter=',')
+reader = csv.reader(open("Pdistance.txt","rb"), delimiter=',')
 distance = list(reader)
 for i in range(len(distance)):
 	distance[i] = map(float, distance[i])
@@ -25,16 +25,16 @@ count = 1
 
 while size > 2:
 	olddistance = [[0 for x in range(len(cluster))] for x in range(len(cluster))]
-	minValue = sys.float_info.max
+	maxValue = sys.float_info.min
 	x = None
 	y = None
 	for i in range(size):
 		for j in range(size):
 			olddistance[i][j] = distance[i][j]
-			if distance[i][j] != 0 and distance[i][j] < minValue:
+			if distance[i][j] != 0 and distance[i][j] > maxValue:
 				x = i
 				y = j
-				minValue = distance[i][j]
+				maxValue = distance[i][j]
 
 	firstspecies = cluster[x]
 	secondspecies = cluster[y]
@@ -45,9 +45,9 @@ while size > 2:
 	print '*******************'
 	print 'Step -', count
 	print '*******************'
-	print 'minCluster 1 =', firstspeciesmapping
-	print 'minCluster 2 =', secondspeciesmapping
-	print 'MinValue = ', minValue
+	print 'maxCluster 1 =', firstspeciesmapping
+	print 'maxCluster 2 =', secondspeciesmapping
+	print 'MaxValue = ', maxValue
 
 	oldcluster = list(cluster)
 

@@ -40,7 +40,7 @@ for i in range(len(str) - 1):
 		for k in range(min(len(str[i]), len(str[j]))):
 			count = count + values[proteindict[str[i][k]]][proteindict[str[j][k]]]
 			
-		count = count + (max(len(str[i]), len(str[j])) - min(len(str[i]), len(str[j]))) * values[proteindict['*']][proteindict['*']]
+		count = count + (max(len(str[i]), len(str[j])) - min(len(str[i]), len(str[j]))) * values[proteindict['*'] - 1][proteindict['*']]
 
 
 		matrix[i][j] = count
